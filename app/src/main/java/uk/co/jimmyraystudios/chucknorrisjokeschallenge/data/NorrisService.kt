@@ -4,7 +4,7 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
 
-interface RetrofitNorrisService {
+interface NorrisService {
 
     companion object {
         val QUERY_FIRST_NAME = "firstName"
