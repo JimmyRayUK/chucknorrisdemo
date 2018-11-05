@@ -12,15 +12,13 @@ import uk.co.jimmyraystudios.chucknorrisjokeschallenge.R
 import uk.co.jimmyraystudios.chucknorrisjokeschallenge.data.Joke
 import uk.co.jimmyraystudios.chucknorrisjokeschallenge.data.NorrisDataSource
 import uk.co.jimmyraystudios.chucknorrisjokeschallenge.data.NorrisDataSourceProvider
-import uk.co.jimmyraystudios.chucknorrisjokeschallenge.search.SearchFragment
-import uk.co.jimmyraystudios.chucknorrisjokeschallenge.search.SearchFragmentContract
 
 
 class HomeFragment : Fragment() {
 
-    private var interactor : MainActivityInteractor? = null
+    private var interactor: MainActivityInteractor? = null
 
-    private lateinit var dataSource : NorrisDataSource
+    private lateinit var dataSource: NorrisDataSource
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -37,7 +35,7 @@ class HomeFragment : Fragment() {
         if (context is MainActivityInteractor) {
             interactor = context
         } else {
-            throw RuntimeException(context.toString() + " must implement MainActivityInteractor")
+            throw RuntimeException(context.toString() + " must implement MainActivityInteractor") as Throwable
         }
     }
 
@@ -46,14 +44,15 @@ class HomeFragment : Fragment() {
         interactor = null
     }
 
-    fun initViews(view : View) {
+    fun initViews(view: View) {
         view.findViewById<Button>(R.id.btn_random_joke).setOnClickListener() { onGetRandomJokeClicked() }
         view.findViewById<Button>(R.id.btn_search_joke).setOnClickListener() { onSearchForJokeClicked() }
+        view.findViewById<Button>(R.id.btn_infinite_jokes).setOnClickListener() { onInfiniteJokesClicked() }
     }
 
     fun onGetRandomJokeClicked() {
         dataSource.getRandomJoke(object : NorrisDataSource.ResponseListener {
-            override fun onResponse(jokes : List<Joke>) {
+            override fun onResponse(jokes: List<Joke>) {
                 interactor?.showJokeDialog(jokes.get(0).joke)
             }
 
@@ -66,6 +65,10 @@ class HomeFragment : Fragment() {
 
     fun onSearchForJokeClicked() {
         interactor?.openSearch()
+    }
+
+    fun onInfiniteJokesClicked() {
+        interactor?.showInfiniteJokes()
     }
 
     companion object {

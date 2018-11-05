@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object NorrisDataSourceProvider {
 
-    private val dataSource : NorrisDataSource
+    private val dataSource: NorrisDataSource
 
     init {
         val retrofit = buildRetrofit()
@@ -13,9 +13,9 @@ object NorrisDataSourceProvider {
         dataSource = RetrofitNorrisDataSource(service)
     }
 
-    fun getDataSource() : NorrisDataSource = dataSource
+    fun getDataSource(): NorrisDataSource = dataSource
 
-    private fun buildRetrofit() : Retrofit {
+    private fun buildRetrofit(): Retrofit {
         return Retrofit.Builder()
                 .baseUrl("http://api.icndb.com/")
                 .addConverterFactory(GsonConverterFactory.create())

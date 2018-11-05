@@ -15,8 +15,8 @@ import uk.co.jimmyraystudios.chucknorrisjokeschallenge.data.NorrisDataSourceProv
 
 class SearchFragment : Fragment(), uk.co.jimmyraystudios.chucknorrisjokeschallenge.search.SearchFragmentContract.View {
     private var interactor: MainActivityInteractor? = null
-    private lateinit var edtSearchTerm : EditText
-    private lateinit var presenter : SearchFragmentPresenter
+    private lateinit var edtSearchTerm: EditText
+    private lateinit var presenter: SearchFragmentPresenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -35,7 +35,7 @@ class SearchFragment : Fragment(), uk.co.jimmyraystudios.chucknorrisjokeschallen
         presenter.onSearchClicked(edtSearchTerm?.text.toString())
     }
 
-    override fun showJoke(joke : String) {
+    override fun showJoke(joke: String) {
         interactor?.showJokeDialog(joke)
     }
 
