@@ -2,7 +2,13 @@ package uk.co.jimmyraystudios.chucknorrisjokeschallenge.search
 
 import uk.co.jimmyraystudios.chucknorrisjokeschallenge.data.Joke
 import uk.co.jimmyraystudios.chucknorrisjokeschallenge.data.NorrisDataSource
+import uk.co.jimmyraystudios.chucknorrisjokeschallenge.escapeHtml
 
+/**
+ * Basic example of a presenter for the search fragment
+ * All dependencies are injected through the constructor and no Android classes are referenced.
+ *
+ */
 class SearchFragmentPresenter(val view: SearchFragmentContract.View, val dataSource: NorrisDataSource) : NorrisDataSource.ResponseListener {
 
     fun onSearchClicked(searchTerm: String) {
@@ -29,7 +35,7 @@ class SearchFragmentPresenter(val view: SearchFragmentContract.View, val dataSou
     }
 
     override fun onResponse(jokes: List<Joke>) {
-        view.showJoke(jokes.get(0).joke)
+        view.showJoke(jokes.get(0).joke.escapeHtml().toString())
     }
 
     override fun onError(message: String) {

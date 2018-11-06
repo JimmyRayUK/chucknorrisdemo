@@ -13,7 +13,10 @@ import uk.co.jimmyraystudios.chucknorrisjokeschallenge.data.Joke
 import uk.co.jimmyraystudios.chucknorrisjokeschallenge.data.NorrisDataSource
 import uk.co.jimmyraystudios.chucknorrisjokeschallenge.data.NorrisDataSourceProvider
 
-
+/**
+ * Main fragment for displaying the navigation buttons
+ * Kept sweet and simple, with no logic there's not much point using MVP or anything fancy
+ */
 class HomeFragment : Fragment() {
 
     private var interactor: MainActivityInteractor? = null

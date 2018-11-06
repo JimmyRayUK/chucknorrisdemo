@@ -22,9 +22,11 @@ class RetrofitNorrisDataSource(val service: NorrisService) : NorrisDataSource {
         service.getJoke(argMap).enqueue(SingleResponseForwarder(listener))
     }
 
-    override fun getMultipleJokes(listener: NorrisDataSource.ResponseListener, count : Int) {
+    override fun getMultipleJokes(listener: NorrisDataSource.ResponseListener, count: Int) {
         service.getMultipleJokes(count).enqueue(MultiResponseForwarder(listener))
     }
+
+
 
     private class SingleResponseForwarder(listener: NorrisDataSource.ResponseListener) : ResponseForwarder<SingleJokeResponse>(listener) {
 
@@ -41,9 +43,14 @@ class RetrofitNorrisDataSource(val service: NorrisService) : NorrisDataSource {
         }
     }
 
+    /**
+     * Convenience class for forwarding retrofit responses to their listeners
+     * Made abstract due to the different service responses
+     * Would have been equally as simple to parse the JSON manually and use GSON for the jokes
+     */
     private abstract class ResponseForwarder<T>(val listener: NorrisDataSource.ResponseListener) : Callback<T> {
 
-        abstract fun onSuccessResponse(response : T)
+        abstract fun onSuccessResponse(response: T)
 
         override fun onResponse(call: Call<T>?, response: Response<T>?) {
             if (response?.body() != null) {

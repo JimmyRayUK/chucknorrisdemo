@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import uk.co.jimmyraystudios.chucknorrisjokeschallenge.home.HomeFragment
-import uk.co.jimmyraystudios.chucknorrisjokeschallenge.inifite.InfiniteJokesFragment
+import uk.co.jimmyraystudios.chucknorrisjokeschallenge.infinite.InfiniteJokesFragment
 import uk.co.jimmyraystudios.chucknorrisjokeschallenge.search.SearchFragment
 
 class MainActivity : AppCompatActivity(), MainActivityInteractor {
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity(), MainActivityInteractor {
                 .beginTransaction()
                 .replace(R.id.main_fragment_container, newFragment)
                 .addToBackStack("")
-                .setCustomAnimations(android.R.anim.slide_in_left, 0)
+                .setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.fade_out)
                 .commit()
     }
 }

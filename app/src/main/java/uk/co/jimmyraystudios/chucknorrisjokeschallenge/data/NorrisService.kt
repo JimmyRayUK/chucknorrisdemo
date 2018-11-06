@@ -16,5 +16,5 @@ interface NorrisService {
     fun getJoke(@QueryMap arguments: Map<String, String>): Call<SingleJokeResponse>
 
     @GET("jokes/random/{count}")
-    fun getMultipleJokes(@Path("count") count : Int) : Call<MultiJokeResponse>
+    fun getMultipleJokes(@Path("count") count: Int): Call<MultiJokeResponse>
 }

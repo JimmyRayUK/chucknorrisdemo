@@ -12,7 +12,12 @@ import uk.co.jimmyraystudios.chucknorrisjokeschallenge.MainActivityInteractor
 import uk.co.jimmyraystudios.chucknorrisjokeschallenge.R
 import uk.co.jimmyraystudios.chucknorrisjokeschallenge.data.NorrisDataSourceProvider
 
-
+/**
+ * Search fragment for creating custom jokes, the document describes this as search, however for ux purposes it's
+ * described as customised jokes
+ *
+ * Due to the logic in the class I thought this would be a good example for MVP
+ */
 class SearchFragment : Fragment(), uk.co.jimmyraystudios.chucknorrisjokeschallenge.search.SearchFragmentContract.View {
     private var interactor: MainActivityInteractor? = null
     private lateinit var edtSearchTerm: EditText
